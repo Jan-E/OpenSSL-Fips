@@ -31,6 +31,6 @@ artifacts:
 
 build_script:
   - cd \OpenSSL\AppVeyor
-  - Install.cmd %openssl_version% %fips_version% %platform% %toolset% %vstudio%
+  - Build.cmd %openssl_version% %fips_version% %platform% %toolset% %vstudio%
 
 test: off
