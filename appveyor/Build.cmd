@@ -1,5 +1,16 @@
 @echo off
-rem "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86
-    call "%vs120comntools%vsvars32.bat"
+call "%vs120comntools%vsvars32.bat"
+cd \OpenSSL-dev\openssl-fips-%2
 
-powershell -ExecutionPolicy Unrestricted .\Build.ps1 %1 %2 %3 %4
+:x64
+
+set PROCESSOR_ARCHITECTURE=AMD64
+rd \usr\local\ssl /s /q
+rd out32dll /s /q
+rd tmp32dll /s /q
+call ms\do_fips.bat %1
+for %%f in (ms\*.mak) do perl -pi.bak -e "s/\/Zi //gi" %%f
+if exist ms\*.mak.bak del ms\*.mak.bak
+rd out32dll /s /q
+rd tmp32dll /s /q
+nmake -f ms\ntdll.mak install

@@ -15,8 +15,8 @@ cache:
 environment:
   matrix:
     - platform: "x86"
-      vstudio:  "VS2013"
       toolset:  "v120"
+      vstudio:  "VS2013"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
 
@@ -29,5 +29,6 @@ artifacts:
 
 build_script:
   - cd
+  - Install.cmd %openssl_version% %fips_version% %platform% %toolset% %vstudio%
 
 test: off
