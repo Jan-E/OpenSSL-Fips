@@ -22,6 +22,7 @@ environment:
 
 install:
   - cd
+  - dir
   - cd AppVeyor
   - Install.cmd %openssl_version% %fips_version%
   - cd
@@ -29,7 +30,7 @@ install:
 artifacts:
 
 build_script:
-  - cd
+  - cd \OpenSSL\AppVeyor
   - Install.cmd %openssl_version% %fips_version% %platform% %toolset% %vstudio%
 
 test: off
