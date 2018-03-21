@@ -23,12 +23,11 @@ environment:
 install:
   - cd AppVeyor
   - Install.cmd %openssl_version% %fips_version%
-  - cd ..
-  - pwd
+  - cd
 
 artifacts:
 
 build_script:
-  - cd AppVeyor
+  - cd
 
 test: off
