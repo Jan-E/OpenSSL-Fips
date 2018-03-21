@@ -21,9 +21,9 @@ environment:
       fips_version:    "2.0.16"
 
 install:
-  - dir "%PROGRAMFILES%\Git" /s
   - cd AppVeyor
   - Install.cmd %openssl_version% %fips_version%
+  - dir \tar.exe /s
 
 artifacts:
 
