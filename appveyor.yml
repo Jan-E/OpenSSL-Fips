@@ -8,15 +8,20 @@ shallow_clone: true
 skip_tags: true
 
 matrix:
-  fast_finish: true
+  fast_finish: false
 
 cache:
 
 environment:
   matrix:
-    - platform: "x86"
-      toolset:  "v120"
-      vstudio:  "VS2013"
+    - platform:        "x86"
+      toolset:         "v110"
+      vstudio:         "VS2012"
+      openssl_version: "1.0.2n"
+      fips_version:    "2.0.16"
+    - platform:        "x64"
+      toolset:         "v110"
+      vstudio:         "VS2012"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
 
