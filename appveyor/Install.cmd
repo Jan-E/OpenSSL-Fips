@@ -1,9 +1,10 @@
 @echo off
 
 choco install nasm
+choco install unxutils
 
-mkdir \OpenSSL
-cd \OpenSSL
+mkdir \OpenSSL-dev
+cd \OpenSSL-dev
 
 echo Downloading https://www.openssl.org/source/openssl-%1.tar.gz
 appveyor DownloadFile https://www.openssl.org/source/openssl-%1.tar.gz
