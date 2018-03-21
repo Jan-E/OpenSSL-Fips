@@ -23,7 +23,8 @@ environment:
 install:
   - cd AppVeyor
   - Install.cmd %openssl_version% %fips_version%
-  - dir \tar.exe /s
+  - cd ..
+  - pwd
 
 artifacts:
 
