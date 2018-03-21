@@ -13,12 +13,12 @@ matrix:
 cache:
 
 environment:
-  - openssl_version: "1.0.2n"
-  - fips_version:    "2.0.16"
   matrix:
     - platform: "x86"
       vstudio:  "VS2013"
       toolset:  "v120"
+      openssl_version: "1.0.2n"
+      fips_version:    "2.0.16"
 
 install:
   - dir "%PROGRAMFILES%\Git" /s
