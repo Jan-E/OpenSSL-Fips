@@ -1,6 +1,6 @@
 version: OpenSSL-Fips-{branch}.{build}
 
-os: Visual Studio 2015
+os: Visual Studio 2017
 
 clone_folder: C:\OpenSSL
 shallow_clone: true
