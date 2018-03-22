@@ -43,6 +43,8 @@ copy out32\ssleay32_a.lib \usr\local\ssl\lib /y
 copy out32dll\libeay32.pdb \usr\local\ssl\bin /y
 copy out32dll\ssleay32.pdb \usr\local\ssl\bin /y
 copy out32dll\openssl.pdb \usr\local\ssl\bin /y
+cd \usr\local\ssl
+7z a \OpenSSL\OpenSSL-%1-%4-%3-fips.zip .
 
 goto done
 
@@ -53,6 +55,7 @@ if "%vstudio%"=="VS2012" call "C:\Program Files (x86)\Microsoft Visual Studio 11
 if "%vstudio%"=="VS2013" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86_amd64
 if "%vstudio%"=="VS2015" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86_amd64
 where cl
+set path=%PATH%;"C:\Program Files\NASM"
 set PROCESSOR_ARCHITECTURE=AMD64
 if exist \usr\local\ssl rd \usr\local\ssl /s /q
 if exist out32dll rd out32dll /s /q
@@ -87,5 +90,6 @@ copy out32\ssleay32_a.lib \usr\local\ssl\lib /y
 copy out32dll\libeay32.pdb \usr\local\ssl\bin /y
 copy out32dll\ssleay32.pdb \usr\local\ssl\bin /y
 copy out32dll\openssl.pdb \usr\local\ssl\bin /y
+7z a \OpenSSL\OpenSSL-%1-%4-%3-fips.zip .
 
 :done

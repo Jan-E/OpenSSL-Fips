@@ -15,27 +15,27 @@ cache:
 environment:
   matrix:
     - platform:        "x86"
-      toolset:         "v140"
+      vcversion:       "VC14"
       vstudio:         "VS2015"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
     - platform:        "x64"
-      toolset:         "v140"
+      vcversion:       "vc14"
       vstudio:         "VS2015"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
     - platform:        "x86"
-      toolset:         "v110"
+      vcversion:       "vc11"
       vstudio:         "VS2012"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
     - platform:        "x64"
-      toolset:         "v110"
+      vcversion:       "vc11"
       vstudio:         "VS2012"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
     - platform:        "x86"
-      toolset:         "v90"
+      vcversion:       "vc9"
       vstudio:         "VS2008"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
@@ -48,9 +48,10 @@ install:
   - cd
 
 artifacts:
+  - path: "*.zip"
 
 build_script:
   - cd \OpenSSL\AppVeyor
-  - Build.cmd %openssl_version% %fips_version% %platform% %toolset% %vstudio%
+  - Build.cmd %openssl_version% %fips_version% %platform% %vcversion% %vstudio%
 
 test: off
