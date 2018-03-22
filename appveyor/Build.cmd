@@ -8,7 +8,7 @@ if "%3"=="x64" goto x64
 if "%vstudio%"=="VS2008" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" x86
 if "%vstudio%"=="VS2012" call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86
 if "%vstudio%"=="VS2013" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86
-if "%vstudio%"=="VS2015" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 8.1
+if "%vstudio%"=="VS2015" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 where cl
 set path=%PATH%;"C:\Program Files\NASM"
 set PROCESSOR_ARCHITECTURE=x86
@@ -26,7 +26,7 @@ goto done
 if "%vstudio%"=="VS2008" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" x86_amd64
 if "%vstudio%"=="VS2012" call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86_amd64
 if "%vstudio%"=="VS2013" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86_amd64
-if "%vstudio%"=="VS2015" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86_amd64 8.1
+if "%vstudio%"=="VS2015" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86_amd64
 where cl
 set PROCESSOR_ARCHITECTURE=AMD64
 if exist \usr\local\ssl rd \usr\local\ssl /s /q
