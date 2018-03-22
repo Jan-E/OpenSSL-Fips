@@ -24,6 +24,16 @@ environment:
       vstudio:         "VS2012"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
+    - platform:        "x86"
+      toolset:         "v90"
+      vstudio:         "VS2008"
+      openssl_version: "1.0.2n"
+      fips_version:    "2.0.16"
+    - platform:        "x64"
+      toolset:         "v90"
+      vstudio:         "VS2008"
+      openssl_version: "1.0.2n"
+      fips_version:    "2.0.16"
 
 install:
   - cd
