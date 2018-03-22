@@ -1,0 +1,31 @@
+From 4a8e33399de5183815c763e41c2739dafedfd290 Mon Sep 17 00:00:00 2001
+From: "Dr. Matthias St. Pierre" <Matthias.St.Pierre@ncp-e.com>
+Date: Mon, 26 Sep 2016 14:23:29 +0200
+Subject: [PATCH] Add missing prototype for FIPS callback
+
+Fixes #2533
+
+The call to FIPS_crypto_set_id_callback() was added in revision a43cfd7bb1fc681d563e,
+but there is no prototype for it in <openssl/fips.h>.
+
+Signed-off-by: Dr. Matthias St. Pierre <Matthias.St.Pierre@ncp-e.com>
+---
+ crypto/o_init.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/crypto/o_init.c b/crypto/o_init.c
+index 185841ea048..18bb85894d3 100644
+--- a/crypto/o_init.c
++++ b/crypto/o_init.c
+@@ -58,6 +58,11 @@
+ #ifdef OPENSSL_FIPS
+ # include <openssl/fips.h>
+ # include <openssl/rand.h>
++
++# ifndef OPENSSL_NO_DEPRECATED
++/* the prototype is missing in <openssl/fips.h> */
++void FIPS_crypto_set_id_callback(unsigned long (*func)(void));
++# endif
+ #endif
+ 
+ /*
