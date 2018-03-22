@@ -1,6 +1,6 @@
 version: OpenSSL-Fips-{branch}.{build}
 
-os: Visual Studio 2013
+os: Visual Studio 2015
 
 clone_folder: C:\OpenSSL
 shallow_clone: true
@@ -15,6 +15,16 @@ cache:
 environment:
   matrix:
     - platform:        "x86"
+      toolset:         "v140"
+      vstudio:         "VS2015"
+      openssl_version: "1.0.2n"
+      fips_version:    "2.0.16"
+    - platform:        "x64"
+      toolset:         "v140"
+      vstudio:         "VS2015"
+      openssl_version: "1.0.2n"
+      fips_version:    "2.0.16"
+    - platform:        "x86"
       toolset:         "v110"
       vstudio:         "VS2012"
       openssl_version: "1.0.2n"
@@ -25,11 +35,6 @@ environment:
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
     - platform:        "x86"
-      toolset:         "v90"
-      vstudio:         "VS2008"
-      openssl_version: "1.0.2n"
-      fips_version:    "2.0.16"
-    - platform:        "x64"
       toolset:         "v90"
       vstudio:         "VS2008"
       openssl_version: "1.0.2n"
