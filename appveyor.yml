@@ -42,17 +42,6 @@ environment:
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
 
-    - platform:        "x86"
-      vcversion:       "vc15"
-      vstudio:         "VS2017"
-      openssl_version: "1.0.2n"
-      fips_version:    "2.0.16"
-    - platform:        "x64"
-      vcversion:       "vc15"
-      vstudio:         "VS2017"
-      openssl_version: "1.0.2n"
-      fips_version:    "2.0.16"
-
 install:
   - cd
   - dir
