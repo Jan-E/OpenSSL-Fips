@@ -1,7 +1,6 @@
 @echo off
 
 choco install nasm
-dir \msys64 /s
 
 mkdir \OpenSSL-dev
 cd \OpenSSL-dev
