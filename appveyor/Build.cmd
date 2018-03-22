@@ -24,8 +24,8 @@ if exist out32 rd out32 /s /q
 if exist out32dll rd out32dll /s /q
 if exist tmp32 rd tmp32 /s /q
 if exist tmp32dll rd tmp32dll /s /q
-perl Configure VC-WIN32 fips --with-fipsdir=\usr\local\ssl\fips-2.0
-call ms\do_nasm.bat
+perl Configure VC-WIN32 no-asm fips --with-fipsdir=\usr\local\ssl\fips-2.0
+call ms\do_ms.bat
 for %%f in (ms\*.mak) do perl -pi.bak -e "s/\/Zi/ /gi" %%f
 if exist ms\*.mak.bak del ms\*.mak.bak
 for %%f in (ms\*.mak) do perl -pi.bak -e "s/\/Zl //gi" %%f
