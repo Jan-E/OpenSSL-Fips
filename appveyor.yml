@@ -8,7 +8,7 @@ shallow_clone: true
 skip_tags: true
 
 matrix:
-  fast_finish: true
+  fast_finish: false
 
 cache:
 
@@ -45,7 +45,7 @@ environment:
 install:
   - cd
   - cd AppVeyor
-  - Install.cmd %openssl_version% %fips_version%
+  - Install.cmd %openssl_version% %fips_version% %platform%
   - cd
 
 artifacts:
@@ -55,4 +55,12 @@ build_script:
   - cd \OpenSSL\AppVeyor
   - Build.cmd %openssl_version% %fips_version% %platform% %vcversion% %vstudio%
 
-test: off
+before_test:
+  - cd \OpenSSL-dev\openssl-1.0.2n
+
+# scripts to run after tests
+after_test:
+
+# to run your custom scripts instead of automatic tests
+test_script:
+  - nmake -f ms\ntdll.mak test && nmake -f ms\nt.mak test

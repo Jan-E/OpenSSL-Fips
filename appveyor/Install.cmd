@@ -1,6 +1,7 @@
 @echo off
 
 choco install nasm
+dir "C:\Program Files\NASM\nasm.exe"
 
 mkdir \OpenSSL-dev
 cd \OpenSSL-dev
