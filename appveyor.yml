@@ -8,18 +8,18 @@ shallow_clone: true
 skip_tags: true
 
 matrix:
-  fast_finish: true
+  fast_finish: false
 
 cache:
 
 environment:
   matrix:
-    - platform:        "x86"
+    - platform:        "x64"
       vcversion:       "vc15"
       vstudio:         "VS2017"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
-    - platform:        "x64"
+    - platform:        "x86"
       vcversion:       "vc15"
       vstudio:         "VS2017"
       openssl_version: "1.0.2n"
@@ -27,7 +27,6 @@ environment:
 
 install:
   - cd
-  - dir
   - cd AppVeyor
   - Install.cmd %openssl_version% %fips_version% %platform%
   - cd
