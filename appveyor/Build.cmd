@@ -63,20 +63,19 @@ if exist out32dll rd out32dll /s /q
 if exist tmp32dll rd tmp32dll /s /q
 perl -pi.bak -e "s/pause//gi" ms\do_fips.bat
 if exist ms\do_fips.bat.bak del ms\do_fips.bat.bak
-call ms\do_fips.bat
+call ms\do_fips.bat no-asm
 
 cd \OpenSSL-dev\openssl-%1
 if exist out32 rd out32 /s /q
 if exist out32dll rd out32dll /s /q
 if exist tmp32 rd tmp32 /s /q
 if exist tmp32dll rd tmp32dll /s /q
-perl Configure VC-WIN64A fips --with-fipsdir=\usr\local\ssl\fips-2.0
+perl Configure VC-WIN64A no-asm fips --with-fipsdir=\usr\local\ssl\fips-2.0
 call ms\do_win64a.bat
 for %%f in (ms\*.mak) do perl -pi.bak -e "s/\/Zi //gi" %%f
 del ms\*.mak.bak
 for %%f in (ms\*.mak) do perl -pi.bak -e "s/\/Zl //gi" %%f
 del ms\*.mak.bak
-:build
 nmake -f ms\ntdll.mak all
 xcopy tmp32dll\applink.obj tmp32\ /y
 nmake -f ms\nt.mak all && nmake -f ms\nt.mak install
