@@ -70,7 +70,7 @@ if exist out32 rd out32 /s /q
 if exist out32dll rd out32dll /s /q
 if exist tmp32 rd tmp32 /s /q
 if exist tmp32dll rd tmp32dll /s /q
-perl Configure VC-WIN64A fips --with-fipsdir=\usr\local\ssl\fips-2.0
+perl Configure VC-WIN64A no-asm fips --with-fipsdir=\usr\local\ssl\fips-2.0
 call ms\do_win64a.bat
 for %%f in (ms\*.mak) do perl -pi.bak -e "s/\/Zi //gi" %%f
 del ms\*.mak.bak
