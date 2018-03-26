@@ -63,9 +63,7 @@ if exist out32dll rd out32dll /s /q
 if exist tmp32dll rd tmp32dll /s /q
 perl -pi.bak -e "s/pause//gi" ms\do_fips.bat
 if exist ms\do_fips.bat.bak del ms\do_fips.bat.bak
-perl Configure VC-WIN64A fipscheck
-call ms\do_win64a.bat
-nmake -f ms\ntdll.mak install
+call ms\do_fips.bat no-asm
 
 cd \OpenSSL-dev\openssl-%1
 if exist out32 rd out32 /s /q
