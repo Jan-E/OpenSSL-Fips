@@ -41,7 +41,6 @@ environment:
       vstudio:         "VS2015"
       openssl_version: "1.0.2n"
       fips_version:    "2.0.16"
-
 install:
   - cd
   - cd AppVeyor
