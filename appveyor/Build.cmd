@@ -9,8 +9,8 @@ if "%vstudio%"=="VS2008" call "C:\Program Files (x86)\Microsoft Visual Studio 9.
 if "%vstudio%"=="VS2012" call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86
 if "%vstudio%"=="VS2013" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86
 if "%vstudio%"=="VS2015" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
-if "%vstudio%"=="VS2017" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
 where cl
+
 set path=%PATH%;"C:\Program Files\NASM"
 set PROCESSOR_ARCHITECTURE=x86
 if exist \usr\local\ssl rd \usr\local\ssl /s /q
@@ -19,6 +19,12 @@ if exist tmp32dll rd tmp32dll /s /q
 perl -pi.bak -e "s/pause//gi" ms\do_fips.bat
 if exist ms\do_fips.bat.bak del ms\do_fips.bat.bak
 call ms\do_fips.bat
+rem rebuild without pdb
+for %%f in (ms\*.mak) do perl -pi.bak -e "s/\/Zi //gi" %%f
+if exist ms\*.mak.bak del ms\*.mak.bak
+rd out32dll /s /q
+rd tmp32dll /s /q
+nmake -f ms\ntdll.mak install
 
 cd \OpenSSL-dev\openssl-%1
 if exist out32 rd out32 /s /q
@@ -53,9 +59,9 @@ goto done
 if "%vstudio%"=="VS2008" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" x86_amd64
 if "%vstudio%"=="VS2012" call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86_amd64
 if "%vstudio%"=="VS2013" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86_amd64
-if "%vstudio%"=="VS2015" call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86_amd64
-if "%vstudio%"=="VS2017" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+if "%vstudio%"=="VS2015" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 where cl
+
 set path=%PATH%;"C:\Program Files\NASM"
 set PROCESSOR_ARCHITECTURE=AMD64
 if exist \usr\local\ssl rd \usr\local\ssl /s /q
@@ -64,6 +70,12 @@ if exist tmp32dll rd tmp32dll /s /q
 perl -pi.bak -e "s/pause//gi" ms\do_fips.bat
 if exist ms\do_fips.bat.bak del ms\do_fips.bat.bak
 call ms\do_fips.bat no-asm
+rem rebuild without pdb
+for %%f in (ms\*.mak) do perl -pi.bak -e "s/\/Zi //gi" %%f
+if exist ms\*.mak.bak del ms\*.mak.bak
+rd out32dll /s /q
+rd tmp32dll /s /q
+nmake -f ms\ntdll.mak install
 
 cd \OpenSSL-dev\openssl-%1
 if exist out32 rd out32 /s /q
@@ -89,6 +101,7 @@ copy out32\ssleay32_a.lib \usr\local\ssl\lib /y
 copy out32dll\libeay32.pdb \usr\local\ssl\bin /y
 copy out32dll\ssleay32.pdb \usr\local\ssl\bin /y
 copy out32dll\openssl.pdb \usr\local\ssl\bin /y
+cd \usr\local\ssl
 7z a \OpenSSL\OpenSSL-%1-%4-%3-fips.zip .
 
 :done
