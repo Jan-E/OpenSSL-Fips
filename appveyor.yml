@@ -17,22 +17,22 @@ environment:
     - platform:        "x64"
       vcversion:       "vc15"
       vstudio:         "VS2017"
-      openssl_version: "1.0.2r"
+      openssl_version: "1.0.2s"
       fips_version:    "2.0.16"
     - platform:        "x86"
       vcversion:       "vc15"
       vstudio:         "VS2017"
-      openssl_version: "1.0.2r"
+      openssl_version: "1.0.2s"
       fips_version:    "2.0.16"
     - platform:        "x64"
       vcversion:       "vc14"
       vstudio:         "VS2015"
-      openssl_version: "1.0.2r"
+      openssl_version: "1.0.2s"
       fips_version:    "2.0.16"
     - platform:        "x86"
       vcversion:       "vc14"
       vstudio:         "VS2015"
-      openssl_version: "1.0.2r"
+      openssl_version: "1.0.2s"
       fips_version:    "2.0.16"
 
 install:
@@ -49,7 +49,7 @@ build_script:
   - Build.cmd %openssl_version% %fips_version% %platform% %vcversion% %vstudio%
 
 before_test:
-  - cd \OpenSSL-dev\openssl-1.0.2r
+  - cd \OpenSSL-dev\openssl-1.0.2s
 
 # scripts to run after tests
 after_test:
